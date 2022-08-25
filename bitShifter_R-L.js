@@ -1,11 +1,3 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<script>
-
-
-
 function lShift(num, nShifts=1, bits=8){
 	maxbit = 1 << (bits-1); // is like: Math.pow(2, bits -1);
 	bits = (maxbit << 1)-1; // is like: Math.pow(2, bits) -1;
@@ -33,9 +25,5 @@ function rShift(num, nShifts=1, bits=8){
 
 //tst
 console.log( rShift(3) );		// input 0000.0011 -> 1000.0001  || 3 -> 129
-console.log( rShift(3,1, 4) );		// input 0011 -> 1001
+console.log( rShift(3,1, 4) );		// input 0011 -> 1001 || 3 -> 9
 console.log( lShift(128,1, 8) );	// input 1000.0000 -> 0000.0001  || 128 -> 1
-		
-		</script>
-	</body
-</html>
