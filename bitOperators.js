@@ -52,6 +52,23 @@ function bitSplit(num, splitAtBit){
 	return result;
 }
 
+function recurAddZeros(numArray, len=4){
+	if(numArray.length%4 !== 0){
+		numArray.unshift(0);
+		return recurAddZeros(numArray, len);
+	}
+	return numArray;
+}
+
+function splitFlatten(numArray, base=4){
+	let tLen = myText.length;
+	for( var i = 0; i < tLen; i++){
+		numArray[i] = recurSplit(numArray[i], base);
+	}
+	numArray = numArray.flat();
+	return numArray
+}
+
 //tst
 console.log( rShift(3) );		// input 0000.0011 -> 1000.0001  || 3 -> 129
 console.log( rShift(3,1, 4) );		// input 0011 -> 1001
@@ -61,3 +78,10 @@ console.log( bitSplit(1023,2) );	// input 11.1111.1111 -> [11,11,11,11,11,11] ||
 console.log( recurSplit(1023,2) );	// same as before, just recursively
 console.log( bitSplit(141,4) );		// input 1000.1101 -> [1000,1101] || 141 -> [8,13]
 console.log( recurSplit(141,4) );	// same as before, just recursively
+
+//encryption:
+
+let myText = [102,111,111]; //01100110, 01101111, 01101111 -> f,o,o
+myText = splitFlatten(myText, 4);
+myText = recurAddZeros(myText);
+console.log( "My Text Result: " + myText );	// Result: My Text Result: 0,0,6,6,6,15,6,15
